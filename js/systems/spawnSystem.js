@@ -4,29 +4,38 @@ export function updateSpawnSystem(game, meta, actions, dt) {
   if (!game.runtime.running) return;
 
   // ==========================================
-  // 1. SISTEMA DE CAIXAS (PREENCHIMENTO INSTANTÂNEO)
+  // 1. SUA REGRA DE PROGRESSÃO
   // ==========================================
-  const maxCrates = 45; 
+  
+  // Fórmula: Começa com 5. Ganha +2 caixas a cada 70 pontos. Teto máximo de 30.
+  // Exemplo: 0 pts = 5 caixas. 70 pts = 7 caixas. 140 pts = 9 caixas.
+  let targetCrates = 5 + (Math.floor(game.score / 70) * 2);
+  
+  // Trava no limite de 30, mesmo que faça 1 milhão de pontos.
+  const maxCrates = Math.min(targetCrates, 30); 
 
-  // Em vez de "se", usamos "enquanto". 
-  // O jogo vai criar caixas num loop até atingir 45 no mesmo frame.
+  // Loop WHILE: Garante que o número de caixas suba IMEDIATAMENTE para o alvo.
+  // Se você tem 5 e a regra pede 7, ele cria 2 agora. Sem atraso.
   while (game.crates.length < maxCrates) {
     spawnCrate(game);
   }
 
+  // Remove caixas mortas da memória para o contador funcionar
+  game.crates = game.crates.filter(c => !c.dead);
+
   // ==========================================
-  // 2. SISTEMA DE INIMIGOS (MANTIDO COM SORTEIO)
+  // 2. SISTEMA DE INIMIGOS
   // ==========================================
   updateEnemySpawning(game);
 }
 
 function spawnCrate(game) {
-  // Pega o tamanho diretamente do seu constants.js: [60, 78, 86]
+  // Sorteia tamanho baseado nas constantes
   const sizeIndex = Math.floor(Math.random() * CRATE.SIZES.length);
   const selectedSize = CRATE.SIZES[sizeIndex];
 
   game.crates.push({
-    // Espalha pelo mapa de 3000x3000px
+    // Espalha no mapa de 3000x3000px, com margem de segurança nas bordas
     x: Math.random() * (WORLD.WIDTH - 200) + 100,
     y: Math.random() * (WORLD.HEIGHT - 200) + 100,
     size: selectedSize,
@@ -41,7 +50,6 @@ function updateEnemySpawning(game) {
   const currentEnemies = game.enemies.filter(e => !e.dead).length;
 
   if (currentEnemies < maxEnemies) {
-    // Inimigos continuam com sorteio para não aparecerem todos na sua cabeça de uma vez
     if (Math.random() < 0.05) {
       spawnEnemy(game);
     }
