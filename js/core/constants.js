@@ -78,7 +78,7 @@ export const ENEMY = {
 
 export const CRATE = {
   BASE_HP: 8,    
-  SIZES: [60, 78, 86], 
+  SIZES: [1060, 1078, 1086], 
   VARIANTS: ["square", "diamond", "hex", "cross"],
 };
 
@@ -91,3 +91,4 @@ export const DROPS = {
   CRATE_COINS_MAX: 3,
 
 };
+
