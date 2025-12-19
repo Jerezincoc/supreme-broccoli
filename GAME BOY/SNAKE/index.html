@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Neon - Menu</title>
+    <link rel="stylesheet" href="game.css">
+    <style>
+        body { text-align: center; }
+        h1 { 
+            font-size: 4rem; margin-bottom: 20px; color: #fff;
+            text-shadow: 4px 4px 0px #ff00ff, -4px -4px 0px #00ffff;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { text-shadow: 4px 4px 0px #ff00ff, -4px -4px 0px #00ffff; }
+            50% { text-shadow: 6px 6px 0px #ff00ff, -6px -6px 0px #00ffff; }
+        }
+        .menu-container { display: flex; flex-direction: column; gap: 20px; z-index: 10; }
+        .btn {
+            padding: 20px 50px; font-size: 1.5rem; background: rgba(0,0,0,0.5);
+            border: 2px solid #fff; cursor: pointer; text-decoration: none;
+            text-transform: uppercase; letter-spacing: 3px; transition: 0.2s;
+            position: relative; overflow: hidden; display: inline-block; color: #fff;
+        }
+        .btn:hover { transform: scale(1.05); }
+        .btn-story { border-color: #00ffff; color: #00ffff; box-shadow: 0 0 10px #00ffff; }
+        .btn-story:hover { background: #00ffff; color: #000; box-shadow: 0 0 30px #00ffff; }
+        .btn-infinite { border-color: #ff00ff; color: #ff00ff; box-shadow: 0 0 10px #ff00ff; }
+        .btn-infinite:hover { background: #ff00ff; color: #000; box-shadow: 0 0 30px #ff00ff; }
+        
+        /* Botão Loja */
+        .btn-shop { border-color: #ffff00; color: #ffff00; box-shadow: 0 0 10px #ffff00; }
+        .btn-shop:hover { background: #ffff00; color: #000; box-shadow: 0 0 30px #ffff00; }
+
+        .controls-info { margin-top: 40px; color: #888; font-size: 0.9rem; border-top: 1px solid #333; padding-top: 20px; }
+        .key { border: 1px solid #666; padding: 2px 6px; border-radius: 4px; color: #fff; }
+
+        /* MOEDAS */
+        #coin-display { font-size: 1.2rem; color: #ffff00; margin-bottom: 20px; text-shadow: 0 0 10px #ffff00; }
+    </style>
+</head>
+<body>
+    <div class="scanlines" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none;"></div>
+
+    <h1>NEON SNAKE</h1>
+    
+    <div id="coin-display">Moedas: <span id="user-coins">0</span></div>
+
+  <div class="menu-container">
+        <a href="fases.html" class="btn btn-story">Modo Fases</a>
+        <a href="infinito.html" class="btn btn-infinite">Modo Infinito</a>
+        
+        <a href="caos.html" class="btn" style="border-color:#ff3939; color:#ff3939; box-shadow:0 0 10px #ff3939;">MODO CAOS</a>
+        
+        <button onclick="openShop()" class="btn btn-shop">LOJA DE SKINS</button>
+    </div>
+
+    <div class="controls-info">
+        <p>PC: <span class="key">WASD</span> move, <span class="key">SHIFT</span> turbo, <span class="key">P</span> pause</p>
+        <p>MOBILE: Toque na tela</p>
+    </div>
+
+    <div id="shop-modal" style="display:none;">
+        <div id="shop-content">
+            <h2>LOJA DE CORES</h2>
+            <div id="shop-grid"></div>
+            <button onclick="closeShop()" class="btn" style="margin-top:20px; border-color:#fff;">VOLTAR</button>
+        </div>
+    </div>
+
+
+
+  <div id="toast"></div>
+
+
+
+    <script src="loja.js"></script>
+    
+    <script src="cheats.js"></script> 
+</body>
+</html>
