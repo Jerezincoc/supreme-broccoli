@@ -92,8 +92,14 @@ function draw() {
   renderer.draw(game, meta);
 }
 
-// Inicia o Loop
-const loop = createLoop({ update, draw });
+// --- INICIALIZAÇÃO SEGURA ---
+function init() {
+  // 1. Garante as dimensões corretas (corrige o bug do F5)
+  game.world.w = canvas.width;
+  game.world.h = canvas.height;
+
+  // 2. Cria e inicia o loop do jogo
+  const loop = createLoop({ update, draw });
   loop.start();
   
   console.log("Sistema Neon Tank Estabilizado.");
@@ -105,4 +111,3 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', init);
 }
-loop.start();
