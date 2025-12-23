@@ -5,7 +5,8 @@ export function drawPlayer(ctx, game) {
   if (p.lives <= 0) return;
 
   // Calcula o ângulo olhando para a mira (Mouse + Câmera)
-  const angle = Math.atan2(game.aim.y - p.y, game.aim.x - p.x);
+const aim = game.aim || { x: 0, y: 0 }; 
+const angle = Math.atan2(aim.y - p.y, aim.x - p.x);
 
   // Define as cores baseadas no estado (Escudo, Turbo, Dano)
   let mainColor = "#003344"; // Azul escuro metálico
@@ -144,4 +145,5 @@ function drawTankSprite(ctx, r, mainColor, neonColor, recoil) {
   ctx.beginPath();
   ctx.arc(0, 0, 4, 0, Math.PI * 2);
   ctx.fill();
+
 }
