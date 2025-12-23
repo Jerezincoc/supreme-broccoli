@@ -52,8 +52,13 @@ export function createGameState(canvas) {
 
     // dimensões (render usa isso)
     world: {
+      aim: { x: 0, y: 0 }, // GARANTA QUE ESSA LINHA EXISTA
+    player: {
+       x: canvas.width / 2,
+       y: canvas.height / 2,
       w: canvas.clientWidth || 800,
       h: canvas.clientHeight || 600,
+      
     },
 
     // player (run)
@@ -187,3 +192,4 @@ export function snapshotForSave(meta) {
     stats: meta.stats,
   };
 }
+
