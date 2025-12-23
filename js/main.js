@@ -94,4 +94,15 @@ function draw() {
 
 // Inicia o Loop
 const loop = createLoop({ update, draw });
+  loop.start();
+  
+  console.log("Sistema Neon Tank Estabilizado.");
+}
+
+// Garante que tudo (CSS, Imagens, DOM) carregou antes de dar o start
+if (document.readyState === 'complete') {
+  init();
+} else {
+  window.addEventListener('load', init);
+}
 loop.start();
