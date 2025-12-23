@@ -49,10 +49,10 @@ export function createGameState(canvas) {
       screen: "start",  // "start" | "playing" | "gameover"
       time: 0,
     },
-    aim: { x: 0, y: 0 }, // GARANTA QUE ESSA LINHA EXISTA
-    player: {
-       x: canvas.width / 2,
-       y: canvas.height / 2,
+
+    // --- A CORREÇÃO ESTÁ AQUI ---
+    aim: { x: 0, y: 0 }, 
+    // ----------------------------
 
     // dimensões (render usa isso)
     world: {
@@ -60,7 +60,7 @@ export function createGameState(canvas) {
       h: canvas.clientHeight || 600,
     },
 
-    // player (run)
+    // player (run) - MANTIVE O SEU ORIGINAL
     player: createPlayer(),
 
     // entidades (run)
@@ -76,10 +76,9 @@ export function createGameState(canvas) {
       score: 0,
       wave: 1,
       frames: 0,
-
       killsThisWave: 0,
       waveTimer: 0,
-      waveDurationFrames: 1800, // 30s em 60fps
+      waveDurationFrames: 1800, 
     },
   };
 }
@@ -191,5 +190,6 @@ export function snapshotForSave(meta) {
     stats: meta.stats,
   };
 }
+
 
 
