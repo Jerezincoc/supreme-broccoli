@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCADE CENTER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/MENU/CSS/MENU.CSS">
+</head>
+<body>
+
+    <div class="scanlines"></div>
+
+    <div class="menu-container">
+        <h1 class="title">GAME,S<br><span class="subtitle">ARCADE ROOM</span></h1>
+        
+        <ul id="game-list">
+            <li class="option selected" data-link="SNAKE/index.html">SNAKE CLASSIC</li>
+            
+            <li class="option" data-link="/CANHAO/index.html">SUPER TANK</li>
+            
+            <li class="option" data-link="/TETRIX/index.html">NEON TETRIS</li>
+
+            <li class="option" data-link="/MENU/BREVE.HTML">BRICKS BREACKER</li>
+        </ul>
+
+        <div class="footer">
+            <p>ESCOLHA SEU JOGO</p>
+            <p style="font-size: 10px; color: #444;">CREDITS: JE DEVELOPER</p>
+        </div>
+    </div>
+
+    <audio id="snd-blip" src="SOM/blip.mp3"></audio>
+    <audio id="snd-start" src="SOM/start.mp3"></audio>
+
+    <script src="/MENU/JS/MENU.JS"></script>
+</body>
+</html>
