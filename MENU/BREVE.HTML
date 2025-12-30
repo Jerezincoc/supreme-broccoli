@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EM BREVE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../CSS/menu.css"> 
+
+    <style>
+        /* Ajuste local para alinhar tudo em coluna no centro */
+        body {
+            display: flex;
+            flex-direction: column; /* Isso coloca um embaixo do outro */
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #555; /* Cor cinza de "desligado" */
+        }
+        
+        .subtitle {
+            color: #ff3939; /* Vermelho alerta */
+            font-size: 15px;
+        }
+
+        /* Estilo do Botão Voltar */
+        .btn-return {
+            background: none;
+            border: 2px solid #00ff88;
+            padding: 15px 30px;
+            color: #00ff88;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            text-decoration: none; /* Tira o sublinhado do link */
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+        }
+
+        .btn-return:hover {
+            background-color: #00ff88;
+            color: #000;
+            box-shadow: 0 0 20px #00ff88;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scanlines"></div>
+
+     <h1 class="title">EM CONSTRUÇÃO<br><span class="subtitle">em breve</span></h1>
+
+    <a href="../index.html" class="btn-return">VOLTAR AO MENU</a>
+
+</body>
+</html>
