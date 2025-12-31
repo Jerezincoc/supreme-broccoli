@@ -58,8 +58,8 @@ if (!game.runtime.running) {
     if (finalScore) finalScore.innerText = game.progression.score; 
     // =====================================
 
-    if (game.runtime.screen === "start" && ui.shopList) {
-       renderShop(ui, meta);
+    //if (game.runtime.screen === "start" && ui.shopList) {
+    //   renderShop(ui, meta);
     }
     return;
   }
@@ -107,6 +107,10 @@ function init() {
   game.world.w = canvas.width;
   game.world.h = canvas.height;
 
+  if (ui.shopList) {
+      renderShop(ui, meta);
+  }
+
   // 2. Cria e inicia o loop do jogo
   const loop = createLoop({ update, draw });
   loop.start();
@@ -122,6 +126,7 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', init);
 }
+
 
 
 
