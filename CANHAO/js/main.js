@@ -103,10 +103,15 @@ function init() {
   game.world.w = canvas.width;
   game.world.h = canvas.height;
 
+  updateSaveSystem(game, meta, null, 0);
+
   if (ui.shopList) {
       renderShop(ui, meta);
   }
 
+  const menuCoin = ui.menuCoinVal || document.getElementById('menuCoinVal');
+  if (menuCoin) menuCoin.innerText = meta.money;
+  
   // 2. Cria e inicia o loop do jogo
   const loop = createLoop({ update, draw });
   loop.start();
@@ -122,6 +127,7 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', init);
 }
+
 
 
 
