@@ -37,13 +37,14 @@ const game = createGameState(canvas); // Dados da Partida (Player, Inimigos)
 const renderer = createRenderer(ctx, canvas);
 
 // --- UPDATE LOOP (Lógica) ---
+// --- UPDATE LOOP (Lógica) ---
 function update(dt) {
   // 1. Inputs e Controle de Telas (Start/GameOver)
   const actions = input.sample();
   updateScreens(ui, game, meta, actions);
 
   // SE NÃO ESTIVER RODANDO (Menu ou GameOver)
-if (!game.runtime.running) {
+  if (!game.runtime.running) {
     updateHud(ui, game, meta); 
 
     // === CORREÇÃO DE NOME DE VARIÁVEL ===
@@ -58,11 +59,13 @@ if (!game.runtime.running) {
     if (finalScore) finalScore.innerText = game.progression.score; 
     // =====================================
 
-    //if (game.runtime.screen === "start" && ui.shopList) {
-    //   renderShop(ui, meta);
-    }
-    return;
-  }
+    // O renderShop foi movido pro init(), então aqui fica vazio ou comentado
+    // if (game.runtime.screen === "start" && ui.shopList) {
+    //    renderShop(ui, meta);
+    // }
+    
+    return; // O return tem que ficar DENTRO do if
+  } // <--- A chave que fecha o if fica AQUI
 
   // 2. ORDEM DE EXECUÇÃO DOS SISTEMAS (CRÍTICO)
   
@@ -94,8 +97,7 @@ if (!game.runtime.running) {
 
   // 3. UI In-Game
   updateHud(ui, game, meta);
-
-
+}
 // --- DRAW LOOP (Visual) ---
 function draw() {
   renderer.draw(game, meta);
@@ -126,6 +128,7 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', init);
 }
+
 
 
 
