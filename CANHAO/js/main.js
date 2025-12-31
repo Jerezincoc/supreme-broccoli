@@ -23,6 +23,7 @@ import { updateScreens } from "./ui/screens.js";
 import { renderShop } from "./ui/shopView.js"; // Visual da Loja
 
 // Inicialização
+let menuFrames = 0;
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -44,30 +45,23 @@ function update(dt) {
   updateScreens(ui, game, meta, actions);
 
   // SE NÃO ESTIVER RODANDO (Menu ou GameOver)
-  if (!game.runtime.running) {
+if (!game.runtime.running) {
     updateHud(ui, game, meta); 
-
-    // === CORREÇÃO DE NOME DE VARIÁVEL ===
+  
     const menuCoin = ui.menuCoinVal || document.getElementById('menuCoinVal');
     const overCoin = ui.overCoinVal || document.getElementById('overCoinVal');
     const finalScore = ui.finalScore || document.getElementById('finalScore');
 
-    // AGORA SIM: Usando .money em vez de .coins
     if (menuCoin) menuCoin.innerText = meta.money; 
-    
     if (overCoin) overCoin.innerText = meta.money;
     if (finalScore) finalScore.innerText = game.progression.score; 
-    // =====================================
 
-    // O renderShop foi movido pro init(), então aqui fica vazio ou comentado
-    // if (game.runtime.screen === "start" && ui.shopList) {
-    //    renderShop(ui, meta);
-    // }
-    
-    return; // O return tem que ficar DENTRO do if
-  } // <--- A chave que fecha o if fica AQUI
-
-  // 2. ORDEM DE EXECUÇÃO DOS SISTEMAS (CRÍTICO)
+    menuFrames++;
+    if (menuFrames % 30 === 0 && game.runtime.screen === "start" && ui.shopList) {
+       renderShop(ui, meta);
+    }
+    return;
+  }
   
   // A) Criação (Inimigos, Caixas)
   updateSpawnSystem(game, meta, actions, dt);
@@ -128,6 +122,7 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', init);
 }
+
 
 
 
