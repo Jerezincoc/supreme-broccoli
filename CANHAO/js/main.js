@@ -94,7 +94,7 @@ if (!game.runtime.running) {
 
   // 3. UI In-Game
   updateHud(ui, game, meta);
-}
+
 
 // --- DRAW LOOP (Visual) ---
 function draw() {
@@ -126,6 +126,7 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', init);
 }
+
 
 
 
