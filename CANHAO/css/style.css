@@ -286,3 +286,12 @@ button:disabled {
 .mission-title { font-size: 14px; color: #fff; }
 
 .mission-progress { font-size: 12px; color: #aaa; }
+
+.controls-wrapper {
+    display: flex;            /* Ativa o flexbox */
+    flex-direction: row;      /* Força a direção LINHA (horizontal) */
+    justify-content: center;  /* Centraliza na tela */
+    gap: 20px;                /* Espaço entre os botões */
+    width: 100%;              /* Garante largura total */
+    margin-top: 30px;         /* Espaço para separar do título */
+}
