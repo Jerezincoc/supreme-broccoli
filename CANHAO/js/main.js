@@ -45,22 +45,19 @@ function update(dt) {
   // SE NÃO ESTIVER RODANDO (Menu ou GameOver)
 if (!game.runtime.running) {
     updateHud(ui, game, meta); 
-    
-    // === CORREÇÃO: ATUALIZAÇÃO MANUAL DA UI DO MENU ===
-    // Se o elemento existir no HTML (pegamos via ui ou direto pelo ID se ui falhar)
+
+    // === CORREÇÃO DE NOME DE VARIÁVEL ===
     const menuCoin = ui.menuCoinVal || document.getElementById('menuCoinVal');
     const overCoin = ui.overCoinVal || document.getElementById('overCoinVal');
     const finalScore = ui.finalScore || document.getElementById('finalScore');
 
-    // Atualiza visualmente com o valor que tá salvo no META (Carteira)
-    if (menuCoin) menuCoin.innerText = meta.coins;
+    // AGORA SIM: Usando .money em vez de .coins
+    if (menuCoin) menuCoin.innerText = meta.money; 
     
-    // No Game Over, mostra o saldo da carteira e o score da partida
-    if (overCoin) overCoin.innerText = meta.coins;
-    if (finalScore) finalScore.innerText = game.score; 
-    // ===================================================
+    if (overCoin) overCoin.innerText = meta.money;
+    if (finalScore) finalScore.innerText = game.progression.score; 
+    // =====================================
 
-    // Atualiza a Loja se ela estiver visível
     if (game.runtime.screen === "start" && ui.shopList) {
        renderShop(ui, meta);
     }
@@ -123,4 +120,5 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', init);
 }
+
 
