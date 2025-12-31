@@ -112,6 +112,8 @@ function init() {
   loop.start();
   
   console.log("Sistema Neon Tank Estabilizado.");
+  window.game = game;
+  window.meta = meta;
 }
 
 // Garante que tudo (CSS, Imagens, DOM) carregou antes de dar o start
@@ -120,5 +122,6 @@ if (document.readyState === 'complete') {
 } else {
   window.addEventListener('load', init);
 }
+
 
 
