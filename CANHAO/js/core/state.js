@@ -1,10 +1,5 @@
 // js/core/state.js
 
-/**
- * MetaState = progresso persistente (salva no navegador)
- * GameState = estado da run atual (reseta ao começar)
- */
-
 export function createMetaState() {
   return {
     // persistência
@@ -190,6 +185,7 @@ export function snapshotForSave(meta) {
     stats: meta.stats,
   };
 }
+
 
 
 
